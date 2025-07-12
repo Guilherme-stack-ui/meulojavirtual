@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Comprar MV - Moderno Roleplay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <div class="logo">Moderno<span>Roleplay</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Início</a></li>
+      <li><a href="#">Download</a></li>
+      <li><a href="#">Comprar MV</a></li>
+      <li><a href="#">Suporte</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Recarregar Moedas Virtuais (MV)</h1>
+
+  <section class="purchase-box">
+    <form id="buyForm" method="POST" action="process_payment.php">
+      <div class="field">
+        <label for="nick">Nick no servidor</label>
+        <input type="text" id="nick" name="nick" required placeholder="SeuNick_Aqui">
+      </div>
+
+      <div class="field">
+        <label for="email">E‑mail para recibo</label>
+        <input type="email" id="email" name="email" required placeholder="email@exemplo.com">
+      </div>
+
+      <div class="field">
+        <label for="qty">Quantidade de MV</label>
+        <input type="range" id="qty" name="qty" min="1000" max="100000" step="1000" value="1000" oninput="updatePrice()">
+        <span id="qtyLabel">1.000</span> MV
+      </div>
+
+      <div class="field price-field">
+        Total: R$ <span id="price">1,00</span>
+      </div>
+
+      <button type="submit" class="primary-btn">Gerar cobrança PIX</button>
+    </form>
+  </section>
+
+  <section id="pixInfo" class="hidden">
+    <h2>Escaneie o QR Code PIX ou copie e cole o código:</h2>
+    <img id="qrImg" alt="QR Code PIX gerado automaticamente">
+    <textarea id="copyPaste" readonly></textarea>
+    <p class="note">Assim que o pagamento for confirmado, suas MV serão entregues automaticamente em até 5 min.</p>
+  </section>
+
+  <section class="faq">
+    <h2>Perguntas frequentes</h2>
+    <details>
+      <summary>Como recebo minhas moedas após o pagamento?</summary>
+      <p>Nosso sistema identifica o pagamento aprovado e envia as MV para o seu nick em até 5 minutos. Certifique‑se de estar offline para receber.</p>
+    </details>
+    <details>
+      <summary>Qual a taxa de conversão?</summary>
+      <p>1 R$ = 1.000 MV, conforme tabela dinâmica acima. citeturn0search0</p>
+    </details>
+    <details>
+      <summary>Posso usar outro método de pagamento?</summary>
+      <p>No momento aceitamos apenas PIX via Mercado Pago. Em breve cartão.</p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Moderno Roleplay. Não somos afiliados à Take‑Two Interactive ou Rockstar Games.
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
